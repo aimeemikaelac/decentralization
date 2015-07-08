@@ -1,0 +1,26 @@
+<h1>New Machine Type</h1>
+
+<% if @type.errors.any? %>
+	<div id="error_explanation">
+		<h2>	
+			<%= pluralize(@type.errors.count, "error") %> prohibited this type from being saved:
+		</h2>
+		<ul>
+			<% @type.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for :type, url: types_path do |f| %>
+<p>
+<%= f.label :name %><br>
+<%= f.text_field :name %>
+</p>
+<p>
+<%= f.submit %>
+</p>
+<% end %>
+
+<%= link_to 'Back', types_path %>

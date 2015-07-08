@@ -1,0 +1,2 @@
+module CloudmanagerHelper
+end

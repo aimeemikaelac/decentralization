@@ -1,0 +1,15 @@
+<h1>Listing Register Machine Types</h1>
+
+<%= link_to 'New machine type', new_type_path %>
+
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+
+	<% @types.each do |type| %>
+		<tr>
+			<td><%= type.name %></td>
+		</tr>
+	<% end %>
+</table>
