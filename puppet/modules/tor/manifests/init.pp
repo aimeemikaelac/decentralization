@@ -53,7 +53,7 @@ class tor(
 			group   => 'root',
 			mode    => '0644',
 			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint']],
-			content => template('tor/authority.erb')
+			content => template('tor/authorityconf.erb')
 		}
 
 		exec{"tor":
