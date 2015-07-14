@@ -12,7 +12,7 @@ class tor(
 
 	exec{ "chown root tor":
 		command => "/bin/chown -R root.root /var/lib/tor; /bin/chown -R root.root /etc/tor",
-		require => Package['tor']
+		require => Package["tor"]
 	}
 
 	exec{'gen keys':
@@ -52,7 +52,7 @@ class tor(
 			owner   => 'root',
 			group   => 'root',
 			mode    => '0644',
-			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint']],
+			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
 			content => template('tor/authorityconf.erb')
 		}
 
