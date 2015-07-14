@@ -36,13 +36,13 @@ class tor(
 		}
 
 		exec{'extract cert fingerprint':
-			command => "cat /var/lib/tor/keys/authority_certificate | grep fingerprint | sed 's/fingerprint //g' > /var/lib/tor/keys/authority_certificate_fingerprint",
+			command => "cat /var/lib/tor/keys/authority_certificate | grep fingerprint | sed \'s/fingerprint //g\' > /var/lib/tor/keys/authority_certificate_fingerprint",
 			require => Exec['gen certs'],
 		}
 
 		#	$authoritycertfingerprint = file('/var/lib/tor/keys/authority_certificate_fingerprint')
 		exec{'extract fingerprint':
-			comand  => "cat /var/lib/tor/fingerprint | sed 's/^.\{4\}//' > /var/lib/tor/fingerprint_raw",
+			comand  => "cat /var/lib/tor/fingerprint | sed \'s/^.\{4\}//\' > /var/lib/tor/fingerprint_raw",
 			require => Exec['gen keys'],
 		}
 
