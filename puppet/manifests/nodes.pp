@@ -23,10 +23,10 @@ notify{'test':}
 node default{
 	notify{'virtualbox':}
 	class {'tor':
-		nodeip = $ipaddress,
-		authorityip = $ipaddress,
-		isAuthority = true,
-		isRouter = true,
+		nodeip => $ipaddress,
+		authorityip => $ipaddress,
+		isAuthority => true,
+		isRouter => true,
 	}
 }
 
