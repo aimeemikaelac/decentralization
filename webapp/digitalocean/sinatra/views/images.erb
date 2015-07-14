@@ -1,0 +1,28 @@
+<h1>Digital Ocean Images</h1>
+
+<a href='/'>Home</a> <br />
+<a href='/account'>Account</a><br />
+<a href='/regions'>Regions</a>
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Distribution</th>
+		<th>Slug</th>
+		<th>Public</th>
+		<th>Regions</th>
+	</tr>
+<% @client.images.all().each do |image| %>
+	<tr>
+		<td><%= image.id %></td>
+		<td><%= image.name %></td>
+		<td><%= image.type %></td>
+		<td><%= image.distribution %></td>
+		<td><%= image.slug %></td>
+		<td><%= image.public %></td>
+		<td><%= image.regions %></td>
+	</tr>
+<% end %>
+</table>

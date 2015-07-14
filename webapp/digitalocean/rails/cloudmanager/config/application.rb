@@ -22,5 +22,12 @@ module Cloudmanager
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+#    config.middleware.use OmniAuth::Builder do
+ #     provider :digitalocean, SETTINGS['CLIENT_ID'], SETTINGS['CLIENT_SECRET'], scope: "read write"
+  #  end
   end
 end
+
+#Rails.application.config.middleware.use OmniAuth::Builder do
+#  provider :digitalocean, SETTINGS['CLIENT_ID'], SETTINGS['CLIENT_SECRET'], scope: "read write"
+#end

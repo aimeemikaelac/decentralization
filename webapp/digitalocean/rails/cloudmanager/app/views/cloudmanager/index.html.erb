@@ -1,2 +1,45 @@
 <h1>Cloudmanager</h1>
 <%= link_to 'Types', controller: 'types' %>
+
+<h2>Authorize with Digital Ocean</h2>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Value</th>
+	</tr>
+	<tr>
+		<td>Provider</td>
+		<td><%= @user['provider'] %></td>
+	</tr>
+	<tr>
+		<td>Uid</td>
+		<td><%= @user['uid'] %></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><%= @user['email'] %></td>
+	</tr>
+	<tr>
+		<td>Token</td>
+		<td><%= session['user_token'] %></td>
+	</tr>
+	<tr>
+		<td>Refresh Token</td>
+		<td><%= session['user_refresh_token'] %></td>
+	</tr>
+	<tr>
+		<td>Expiration</td>
+		<td><%= session['user_token_expires'] %></td>
+	</tr>
+	<tr>
+		<td>UUID</td>
+		<td><%= session['user_uuid'] %></td>
+	</tr>
+	<% @droplets.each do |droplet| %>
+	<tr>
+		<td>Droplet name</td>
+		<td><%= droplet.name %></td>
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,47 @@
+<h1>Your Account</h1>
+
+<a href='/'>Home</a> <br />
+<a href='/regions'>Regions</a> <br />
+<a href='/images'>Images</a>
+
+<% info = @client.account.info() %>
+
+<table>
+	<tr>
+		<td>Email:</td>
+		<td><%= info.email %></td>
+	</tr>
+	<tr>
+		<td>Droplet Limit:</td>
+		<td><%= info.droplet_limit %></td>
+	</tr>
+	<tr>
+		<td>UUID:</td>
+		<td><%= info.uuid %></td>
+	</tr>
+</table>
+
+<h2>Droplets:</h2>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Memory</th>
+		<th>VCPUS</th>
+		<th>Disk</th>
+		<th>Status</th>
+		<th>Image</th>
+	</tr>
+<% droplets = @client.droplets.all() %>
+	<% droplets.each do |droplet| %>
+	<tr>
+		<td><%= droplet.id %></td>
+		<td><%= droplet.name %></td>
+		<td><%= droplet.memory %></td>
+		<td><%= droplet.vcpus %></td>
+		<td><%= droplet.disk %></td>
+		<td><%= droplet.status %></td>
+		<td><%= droplet.image %></td>
+	</tr>
+	<% end %>
+</table>

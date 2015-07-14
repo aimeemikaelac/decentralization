@@ -1,0 +1,24 @@
+<h1>Digital Ocean Regions</h1>
+
+<a href='/'>Home</a> <br />
+<a href='/account'>Account</a> <br />
+<a href='/images'>Images</a>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Slug</th>
+		<th>Sizes</th>
+		<th>Available</th>
+		<th>Features</th>
+	</tr>
+<% @client.regions.all().each do |region| %>
+	<tr>
+		<td><%= region.name %></td>
+		<td><%= region.slug %></td>
+		<td><%= region.sizes %></td>
+		<td><%= region.available %></td>
+		<td><%= region.features %></td>
+	</tr>
+<% end %>
+</table>

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :machines
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+#  resources :machines
 
-  resources :types
+  resources :types 
+  #do
+#	  resources :machines
+ # end
 
   get 'cloudmanager/index'
 

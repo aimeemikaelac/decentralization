@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708083107) do
+ActiveRecord::Schema.define(version: 20150714003412) do
 
   create_table "machines", force: :cascade do |t|
     t.string   "name"
     t.string   "instancename"
     t.string   "account"
     t.integer  "type_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "region"
+    t.string   "size"
+    t.string   "image"
+    t.boolean  "backups"
+    t.boolean  "ipv6"
+    t.boolean  "private_networking"
   end
 
   add_index "machines", ["instancename"], name: "index_machines_on_instancename", unique: true
@@ -32,5 +38,25 @@ ActiveRecord::Schema.define(version: 20150708083107) do
   end
 
   add_index "types", ["name"], name: "index_types_on_name", unique: true
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
