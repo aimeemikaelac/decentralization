@@ -46,20 +46,23 @@ class tor(
 			require => Exec['gen keys'],
 		}
 
-		require [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
-
-		file{"/etc/torrc":
-			path    => "/etc/tor/torrc",
-			owner   => 'root',
-			group   => 'root',
-			mode    => '0644',
-			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
-			content => template('tor/authorityconf.erb')
+		class {'authorityconf':
+			requires => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
 		}
+		#		require [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
+		#
+		#		file{"/etc/torrc":
+		#			path    => "/etc/tor/torrc",
+		#			owner   => 'root',
+		#			group   => 'root',
+		#			mode    => '0644',
+		#			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
+		#			content => template('tor/authorityconf.erb')
+		#		}
 
 		exec{"tor":
 			command => "tor",
-			require => File["/etc/torrc"],
+			require => Class["authorityconf"],
 		}
 	}
 }
