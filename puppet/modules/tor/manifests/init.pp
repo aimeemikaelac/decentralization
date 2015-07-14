@@ -46,6 +46,7 @@ class tor(
 			require => Exec['gen keys'],
 		}
 
+		require [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
 
 		file{"/etc/torrc":
 			path    => "/etc/tor/torrc",
