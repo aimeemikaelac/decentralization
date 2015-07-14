@@ -42,7 +42,7 @@ class tor(
 
 		#	$authoritycertfingerprint = file('/var/lib/tor/keys/authority_certificate_fingerprint')
 		exec{'extract fingerprint':
-			comand  => "cat /var/lib/tor/fingerprint | sed 's/^.\\{4\}//' > /var/lib/tor/fingerprint_raw",
+			comand  => "cat /var/lib/tor/fingerprint | sed 's/^.\\{4\\}//' > /var/lib/tor/fingerprint_raw",
 			require => Exec['gen keys'],
 		}
 
