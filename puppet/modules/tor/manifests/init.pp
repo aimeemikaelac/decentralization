@@ -47,7 +47,7 @@ class tor(
 		}
 
 		class {'authorityconf':
-			requires => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
+			require => [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
 		}
 		#		require [Exec["gen certs"], Exec['gen keys'], Exec['extract cert fingerprint'], Exec['extract fingerprint'], Package['tor']],
 		#
