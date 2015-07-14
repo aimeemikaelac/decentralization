@@ -1,0 +1,12 @@
+puppetlabs/apt
+puppetlabs/stdlib
+puppetlabs/inifile
+puppetlabs/concat
+puppetlabs/vcsrepo
+puppetlabs/mysql
+puppetlabs/ntp
+arnoudj/sudo
+saz/limits
+saz/vim
+thias/sysctl
+synyx/avahi
